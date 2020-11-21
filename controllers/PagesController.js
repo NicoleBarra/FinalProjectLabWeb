@@ -1,6 +1,7 @@
 
 let ProductModel = require('../models/Upload');
 let UserModel = require('../models/User');
+let LikesModel = require('../models/Likes')
 
 exports.homepage = (req, res) => {
    
@@ -131,4 +132,55 @@ exports.followers = (req, res) => {
       
     });
   
+}
+
+exports.likes = (req, res) => {
+  LikesModel.likesTimeline(req.user.id)
+  .then((data) => {
+    // Guardamos los productos en una variable
+    let images = data;
+    console.log(images);
+    // Enviamos los datos a la vista
+    res.render('pages/mylikes', { layout: 'style', username:req.user.name, images: images });
+  })
+}
+
+exports.addLikes = (req, res) => {
+  LikesModel.addLike(req.upload.id, req.user.id)
+  .then((data) => {
+    req.upload.likes += 1;
+  })
+}
+
+/*exports.details = (req,res) => {
+  console.log(req)
+  var upload_id = req.params.uploadId
+  ProductModel.findById(upload_id)
+  .then((data) => {
+    // Guardamos los productos en una variable
+    let images = data;
+     console.log(images)
+    // Enviamos los datos a la vista
+
+    if(req.isAuthenticated()){
+      res.render('pages/imagedetail', { layout: 'style', username:req.user.name, images: images, logged:true });
+    }
+    else{
+      res.render('pages/imagedetail', { layout: 'style', images: images, logged:false });
+    }
+  });
+} */
+
+exports.details = (req, res) => {
+  console.log(req.params.uploadId);
+  ProductModel.findById(req.params.uploadId)
+  .then((data) => {
+    // Guardamos los productos en una variable
+    let images = data;
+    console.log("image data")
+    console.log(images)
+     //console.log(images)
+    // Enviamos los datos a la vista
+    res.render('pages/imagedetail', { layout: 'style', images: images });
+  });
 }

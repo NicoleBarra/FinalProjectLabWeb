@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Entrega Parcial 1">
+  <meta name="author" content="">
+
+  <title>CapArt</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/heroic-features.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="./">CapArt</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul id = "navigation_bar" class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./">Popular
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="details">
+    <div class="row Image">
+        <div class="col-xs-12">
+          <img class="card-img-top" src="{{images.imgUrl}}" alt="">
+        </div>
+    </div>
+    <div class="row Artist Info">
+        <div class="col-md-offset-1 col-md-10">
+          <h4 class="card-title">{{images.title}}</h4>
+        </div>
+    </div>
+    <div class="row Description">
+        <div class="col-xs-12">
+          <h3 class="card-title">{{images.user}}</h3>
+          <p class="card-text">{{images.description}}</p>
+          <div class="col">
+            <a href="" class="btn btn-danger">Like</a>
+          </div>
+          <div class="col">
+            <p class="card-text">{{images.likes}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="row Comments">
+        <div class="col-xs-12 row-md-offset-2">
+          <div class="form-label-group">
+            <input name="comment" type="input" id="inputComment" class="form-control col-6" placeholder="text" required="" autofocus="" autocomplete="off">
+            <button class="btn btn-primary col-6" type="submit">Comment</button>
+          </div>
+
+        </div>
+        <div class="col-md-9">
+        </div>
+    </div>
+  </div>
+
+
+</body>
