@@ -10,6 +10,12 @@ exports.findById = (id) => {
     .first();
 }
 
+exports.updateLikes = (id,likes) => {
+  return knex('uploads')
+  .where('id',id)
+  .update('likes',likes)
+}
+
 exports.all = () => {
   // Realiza la consulta dentro de knex
   return knex

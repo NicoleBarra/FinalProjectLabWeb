@@ -25,7 +25,7 @@ router.get('/protected', (req, res) => {
   res.send('Usuario logueado con éxito');
 });
 
-
+router.get('/addLike', PagesController.addLike);
 
 
 

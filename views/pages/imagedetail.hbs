@@ -23,14 +23,14 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="./">CapArt</a>
+      <a class="navbar-brand" href="../">CapArt</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul id = "navigation_bar" class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="./">Popular
+            <a class="nav-link" href="../">Popular
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -55,7 +55,7 @@
           <h3 class="card-title">{{images.user}}</h3>
           <p class="card-text">{{images.description}}</p>
           <div class="col">
-            <a href="" class="btn btn-danger">Like</a>
+            <a href="../addlike?id={{images.id}}&likes={{images.likes}}" class="btn btn-danger">Like</a>
           </div>
           <div class="col">
             <p class="card-text">{{images.likes}}</p>
@@ -74,6 +74,80 @@
         </div>
     </div>
   </div>
+
+  <script>
+    //get navigation bar
+    var navigation_bar = document.getElementById("navigation_bar");
+    //buttons for logged in
+    if({{logged}}){
+
+      //timeline
+      var timelineli = document.createElement("li");
+      timelineli.className = "nav-item";
+      var timelinea = document.createElement("a");
+      timelinea.className = "nav-link";
+      timelinea.href = "../MyTimeline";
+      timelinea.innerHTML = "My Timeline"
+      timelineli.appendChild(timelinea);
+      navigation_bar.appendChild(timelineli);
+
+      //profile
+      var profileli = document.createElement("li");
+      profileli.className = "nav-item";
+      var profilea = document.createElement("a");
+      profilea.className = "nav-link";
+      profilea.href = "../MyGallery";
+      profilea.innerHTML = "My Gallery"
+      profileli.appendChild(profilea);
+      navigation_bar.appendChild(profileli);
+
+      //user
+      var userli = document.createElement("li");
+      userli.className = "nav-item";
+      var usera = document.createElement("a");
+      usera.className = "nav-link";
+      usera.href = "../MyGallery";
+      usera.innerHTML = "{{username}}"
+      userli.appendChild(usera);
+      navigation_bar.appendChild(userli);
+
+      //logout
+      var logoutli = document.createElement("li");
+      logoutli.className = "nav-item";
+      var logouta = document.createElement("a");
+      logouta.className = "nav-link";
+      logouta.href = "../Logout";
+      logouta.innerHTML = "Logout"
+      logoutli.appendChild(logouta);
+      navigation_bar.appendChild(logoutli);      
+
+    }
+    
+    else{
+      //buttons for not logged in
+
+      //register
+      var registerli = document.createElement("li");
+      registerli.className = "nav-item";
+      var registera = document.createElement("a");
+      registera.className = "nav-link";
+      registera.href = "../Register";
+      registera.innerHTML = "Register"
+      registerli.appendChild(registera);
+      navigation_bar.appendChild(registerli);    
+
+      //login
+      var loginli = document.createElement("li");
+      loginli.className = "nav-item";
+      var logina = document.createElement("a");
+      logina.className = "nav-link";
+      logina.href = "../Login";
+      logina.innerHTML = "Login"
+      loginli.appendChild(logina);
+      navigation_bar.appendChild(loginli);              
+    }
+    
+  </script>
 
 
 </body>

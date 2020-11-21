@@ -31,6 +31,16 @@ exports.homepageunlogged = (req, res) => {
     });
 }
 
+exports.addLike = (req,res) => {
+  var id = req.query.id
+  var likes = parseInt(req.query.likes) + 1
+  ProductModel.updateLikes(id,likes)
+  .then((data) => {
+
+    res.redirect('/Uploads/'+id)
+  })
+}
+
 exports.timeline = (req, res) => {
     //gets your followers
     //gets art from your followers
@@ -181,6 +191,12 @@ exports.details = (req, res) => {
     console.log(images)
      //console.log(images)
     // Enviamos los datos a la vista
-    res.render('pages/imagedetail', { layout: 'style', images: images });
+    if(req.isAuthenticated()){
+      res.render('pages/imagedetail', { layout: 'style', username:req.user.name,images: images,logged:true });
+    }
+    else{
+      res.render('pages/imagedetail', { layout: 'style', images: images, logged:false});
+    }
+    
   });
 }
