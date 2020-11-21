@@ -25,7 +25,7 @@ router.get('/protected', (req, res) => {
   res.send('Usuario logueado con éxito');
 });
 
-
+router.get('/addLike', PagesController.addLike);
 
 
 
@@ -53,6 +53,14 @@ router.get('/MyTimeline', (req, res, next) => {
 
 },PagesController.timeline);
 
+router.get('/MyLikes', (req, res, next) => {
+  if(req.isAuthenticated()) return next();
+  
+  res.redirect('/MyLikes');
+  
+
+},PagesController.likes);
+
 
 router.get('/Image', (req, res, next) => {
   if(req.isAuthenticated()) return next();
@@ -75,6 +83,13 @@ router.get('/Profile/:profileId', function (req, res,next) {
   console.log(profile_id)
   return next();
 },PagesController.profile);
+
+router.get('/Uploads/:uploadId', function (req, res,next) {
+  var upload_id = req.params.uploadId;
+  console.log("upload_id")
+  console.log(upload_id)
+  return next();
+},PagesController.details);
 
 router.get('/myfollows', PagesController.follows);
 router.get('/myfollowers', PagesController.followers);

@@ -20,17 +20,17 @@
 
 <body>
 
-  <!-- Navigation -->
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="./">CapArt</a>
+      <a class="navbar-brand" href="../">CapArt</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul id = "navigation_bar" class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="./">Popular
+            <a class="nav-link" href="../">Popular
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -39,41 +39,41 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="container">
-
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h1 class="display-3">Popular</h1>
-      <p class="lead">The most liked pictures in the website!</p>
-    </header>
-
-    <!-- Page Features -->
-    <div class="row text-center">
-
-      {{#each images}}
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="./Uploads/{{this.id}}"><img class="card-img-top" src="{{this.imgUrl}}" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">{{this.title}}</h4>
-              <p class="card-text">{{this.description}}</p>
-            </div>
-            <div class="card-footer">
-              <a href="./Profile/{{this.user}}" class="btn btn-danger">{{this.user}}</a>
-            </div>
+  <div class="details">
+    <div class="row Image">
+        <div class="col-xs-12">
+          <img class="card-img-top" src="{{images.imgUrl}}" alt="">
+        </div>
+    </div>
+    <div class="row Artist Info">
+        <div class="col-md-offset-1 col-md-10">
+          <h4 class="card-title">{{images.title}}</h4>
+        </div>
+    </div>
+    <div class="row Description">
+        <div class="col-xs-12">
+          <h3 class="card-title">{{images.user}}</h3>
+          <p class="card-text">{{images.description}}</p>
+          <div class="col">
+            <a href="../addlike?id={{images.id}}&likes={{images.likes}}" class="btn btn-danger">Like</a>
+          </div>
+          <div class="col">
+            <p class="card-text">{{images.likes}}</p>
           </div>
         </div>
-      {{/each}}
-
     </div>
-    <!-- /.row -->
+    <div class="row Comments">
+        <div class="col-xs-12 row-md-offset-2">
+          <div class="form-label-group">
+            <input name="comment" type="input" id="inputComment" class="form-control col-6" placeholder="text" required="" autofocus="" autocomplete="off">
+            <button class="btn btn-primary col-6" type="submit">Comment</button>
+          </div>
 
+        </div>
+        <div class="col-md-9">
+        </div>
+    </div>
   </div>
-  <!-- /.container -->
-
-   
-  </footer>
 
   <script>
     //get navigation bar
@@ -86,7 +86,7 @@
       timelineli.className = "nav-item";
       var timelinea = document.createElement("a");
       timelinea.className = "nav-link";
-      timelinea.href = "./MyTimeline";
+      timelinea.href = "../MyTimeline";
       timelinea.innerHTML = "My Timeline"
       timelineli.appendChild(timelinea);
       navigation_bar.appendChild(timelineli);
@@ -96,7 +96,7 @@
       profileli.className = "nav-item";
       var profilea = document.createElement("a");
       profilea.className = "nav-link";
-      profilea.href = "./MyGallery";
+      profilea.href = "../MyGallery";
       profilea.innerHTML = "My Gallery"
       profileli.appendChild(profilea);
       navigation_bar.appendChild(profileli);
@@ -106,7 +106,7 @@
       userli.className = "nav-item";
       var usera = document.createElement("a");
       usera.className = "nav-link";
-      usera.href = "./MyGallery";
+      usera.href = "../MyGallery";
       usera.innerHTML = "{{username}}"
       userli.appendChild(usera);
       navigation_bar.appendChild(userli);
@@ -116,7 +116,7 @@
       logoutli.className = "nav-item";
       var logouta = document.createElement("a");
       logouta.className = "nav-link";
-      logouta.href = "./Logout";
+      logouta.href = "../Logout";
       logouta.innerHTML = "Logout"
       logoutli.appendChild(logouta);
       navigation_bar.appendChild(logoutli);      
@@ -131,7 +131,7 @@
       registerli.className = "nav-item";
       var registera = document.createElement("a");
       registera.className = "nav-link";
-      registera.href = "./Register";
+      registera.href = "../Register";
       registera.innerHTML = "Register"
       registerli.appendChild(registera);
       navigation_bar.appendChild(registerli);    
@@ -141,7 +141,7 @@
       loginli.className = "nav-item";
       var logina = document.createElement("a");
       logina.className = "nav-link";
-      logina.href = "./Login";
+      logina.href = "../Login";
       logina.innerHTML = "Login"
       loginli.appendChild(logina);
       navigation_bar.appendChild(loginli);              
@@ -149,10 +149,5 @@
     
   </script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
-</html>
