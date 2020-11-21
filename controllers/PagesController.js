@@ -1,7 +1,8 @@
 
 let ProductModel = require('../models/Upload');
 let UserModel = require('../models/User');
-let LikesModel = require('../models/Likes')
+let LikesModel = require('../models/Likes');
+let FollowersModel = require('../models/Followers');
 
 exports.homepage = (req, res) => {
    
@@ -180,6 +181,38 @@ exports.addLikes = (req, res) => {
     }
   });
 } */
+
+exports.followmove = (req,res) => {
+  var following = req.query.following
+  var follower = req.query.follower
+  var followingid = 0
+  var followerid = 0
+  console.log("following")
+  console.log("follower")
+  console.log(following)
+  console.log(follower)
+
+  UserModel.findByName(following)
+  .then((data) => {
+      followingid = data.id
+      UserModel.findByName(follower)
+      .then((data) => {
+          followerid = data.id
+          FollowersModel.create(followerid,followingid)
+  .then((data) => {
+    res.redirect("/myfollows")
+  })
+      })
+  })
+
+
+
+  
+
+  
+  
+
+}
 
 exports.details = (req, res) => {
   console.log(req.params.uploadId);

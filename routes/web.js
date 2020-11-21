@@ -27,6 +27,8 @@ router.get('/protected', (req, res) => {
 
 router.get('/addLike', PagesController.addLike);
 
+router.get('/follow', PagesController.followmove);
+
 
 
 

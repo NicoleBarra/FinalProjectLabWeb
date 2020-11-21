@@ -14,13 +14,13 @@ exports.all = () => {
   // Realiza la consulta dentro de knex
   return knex
     .select('*')
-    .from('uploads');
+    .from('followers');
 }
 
 exports.findByUser = (username)=>{
   return knex
     .select('*')
-    .from('uploads')
+    .from('followers')
     .where('user', username)
     
 }
@@ -31,16 +31,15 @@ exports.findMostPopular = () =>{
   yesterday.setDate(date.getDate() - 1);
   return knex
   .select('*')
-  .from('uploads')
+  .from('followers')
   .where('created_at','>',yesterday)
   .orderBy('likes','desc')
   .limit(10)
 }
 
 
-exports.create = (upload, image, user) => {
+exports.create = (follower,following) => {
 
-  let url = 'http://localhost:3000/images/' + image.filename;
-  return knex('uploads')
-    .insert({ title: upload.title, description: upload.desciption, imgUrl: url, user: user.name })
+  return knex('followers')
+    .insert({ follower:following , followed:follower})
 }

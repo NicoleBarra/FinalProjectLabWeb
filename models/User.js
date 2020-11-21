@@ -12,6 +12,14 @@ exports.findById = (id) => {
     .first();
 }
 
+exports.findByName = (name) => {
+  return knex
+    .select('*')
+    .from('users')
+    .where('name', name)
+    .first();
+}
+
 /**
  * Encuentra al usuario que tenga el correo indicado
  */
